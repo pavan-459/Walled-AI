@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "demo-files": {
+      "command": "/absolute/path/to/mcp-guard/.venv/bin/python",
+      "args": ["/absolute/path/to/mcp-guard/examples/demo_server.py"]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/you/Desktop"]
+    }
+  }
+}
