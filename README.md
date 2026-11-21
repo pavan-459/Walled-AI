@@ -280,5 +280,5 @@ mcp_guard/
   ui/               tk_popup.py (default), console.py (headless), auto.py (tests)
 examples/demo_server.py   harmless demo MCP server (stdio or HTTP)
 tests/                    pytest suite + scripted fake MCP server
-docs/                     architecture notes, demo script
+docs/                     architecture notes, screenshot
 ```

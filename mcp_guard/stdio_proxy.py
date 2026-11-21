@@ -94,6 +94,12 @@ class StdioProxy:
         else:
             log.info("server exited")
             await self._cancel_held()
+            # stdout EOF can be seen before the exit status (notably on Windows), so wait for
+            # the real return code instead of reporting 0.
+            try:
+                await asyncio.wait_for(asyncio.shield(child_exit), timeout=5)
+            except (asyncio.TimeoutError, Exception):
+                pass
 
         # Give the server's final output a moment to drain, then tidy up.
         try:
