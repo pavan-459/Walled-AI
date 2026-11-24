@@ -6,6 +6,8 @@ popup shows you the server, tool and exact arguments on top of your other window
 nothing reaches the MCP server until you click **Allow**. **Block** returns a denial to
 Claude instead.
 
+**Demo video:** [approve and block in Claude Desktop and claude.ai](https://drive.google.com/file/d/1HB_gdL7y7Pw9hDeO7RlK24KYGenHyQrI/view?usp=drive_link)
+
 ![Two simultaneous requests, each in its own popup](docs/popup.png)
 
 *Two tool calls arrived at the same time, so there are two popups. They can be answered in any order.*
@@ -120,6 +122,10 @@ notes.txt"*. The popup appears. **Allow** runs the tool. **Block** makes the cal
 
 Claude Desktop also has its own per-tool permission prompt. If you choose "Always allow" there,
 MCP Guard is the only gate you see.
+
+Claude Desktop usually sends tool calls one at a time. To see several requests held at once,
+run `python examples/concurrent_calls.py`: it sends two calls together through the proxy, two
+popups appear, and each is decided independently.
 
 You don't strictly need step 2's `start`: if a proxy finds no daemon running, it starts one
 automatically (`auto_start_daemon`).
@@ -279,6 +285,7 @@ mcp_guard/
   config.py         paths, settings, token
   ui/               tk_popup.py (default), console.py (headless), auto.py (tests)
 examples/demo_server.py   harmless demo MCP server (stdio or HTTP)
+examples/concurrent_calls.py  sends two tool calls at once through the proxy
 tests/                    pytest suite + scripted fake MCP server
 docs/                     architecture notes, screenshot
 ```
